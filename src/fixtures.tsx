@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import type { VFC } from "react";
 
 export const Simple: VFC = () => <h1>hello</h1>;
@@ -19,4 +19,13 @@ export const Lists: VFC<{ items: string[] }> = ({ items }) => {
       ))}
     </ul>
   );
+};
+
+export const Hooks: VFC = () => {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    setCount(10);
+  }, []);
+
+  return <span>{count}</span>;
 };
