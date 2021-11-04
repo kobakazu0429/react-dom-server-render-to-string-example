@@ -1,8 +1,11 @@
-import React from "react";
+import React, { createElement } from "react";
 import ReactDOMServer from "react-dom/server";
-import { Simple } from "./fixtures";
+import { Simple, Props } from "./fixtures";
 
-const SimpleComp = React.createElement(Simple);
-const html = ReactDOMServer.renderToStaticMarkup(SimpleComp);
+const Comps = [
+  createElement(Simple),
+  createElement(Props, { name: "kazu", age: 20 }),
+];
+const htmls = Comps.map((c) => ReactDOMServer.renderToStaticMarkup(c));
 
-console.log(html);
+console.log(htmls);
