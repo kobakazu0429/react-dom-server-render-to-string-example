@@ -8,3 +8,15 @@ export const Props: VFC<{ name: string; age: number }> = ({ name, age }) => (
     {name}, {age}
   </span>
 );
+
+const List: VFC<{ item: string }> = ({ item }) => <li>{item}</li>;
+
+export const Lists: VFC<{ items: string[] }> = ({ items }) => {
+  return (
+    <ul>
+      {items.map((i) => (
+        <List item={i} key={i} />
+      ))}
+    </ul>
+  );
+};
