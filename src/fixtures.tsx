@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext, createContext } from "react";
 import type { VFC } from "react";
 
 export const Simple: VFC = () => <h1>hello</h1>;
@@ -28,4 +28,25 @@ export const Hooks: VFC = () => {
   }, []);
 
   return <span>{count}</span>;
+};
+
+const ctx = createContext<{ count: number; setCount: (v: number) => void }>(
+  {} as any
+);
+
+const Child: VFC = () => {
+  const { count, setCount } = useContext(ctx);
+  setCount(1000);
+
+  return <span>{count}</span>;
+};
+
+export const Context: VFC = () => {
+  const [count, setCount] = useState(100);
+
+  return (
+    <ctx.Provider value={{ count, setCount }}>
+      <Child />
+    </ctx.Provider>
+  );
 };
