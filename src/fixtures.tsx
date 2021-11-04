@@ -1,3 +1,4 @@
 import React from "react";
+import type { VFC } from "react";
 
-export const Simple = () => <h1>hello</h1>;
+export const Simple: VFC = () => <h1>hello</h1>;
