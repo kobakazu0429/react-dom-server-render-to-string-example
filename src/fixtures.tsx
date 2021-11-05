@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  useContext,
-  createContext,
-  useLayoutEffect,
-} from "react";
+import React, { useState, useEffect, useContext, createContext } from "react";
 import type { VFC } from "react";
 
 export const Simple: VFC = () => <h1>hello</h1>;
@@ -33,9 +27,9 @@ export const Hooks: VFC = () => {
     setCount(10);
   }, []);
 
-  useLayoutEffect(() => {
-    setCount(100);
-  }, []);
+  // useLayoutEffect(() => {
+  //   setCount(100);
+  // }, []);
 
   return <span>{count}</span>;
 };
