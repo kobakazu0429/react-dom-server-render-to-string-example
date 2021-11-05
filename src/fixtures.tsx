@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext, createContext } from "react";
 import type { VFC } from "react";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 export const Simple: VFC = () => <h1>hello</h1>;
 
@@ -52,5 +53,44 @@ export const Context: VFC = () => {
     <ctx.Provider value={{ count, setCount }}>
       <Child />
     </ctx.Provider>
+  );
+};
+
+export const helmetContext1: any = {};
+
+export const Head: VFC = () => {
+  return (
+    <HelmetProvider context={helmetContext1}>
+      <Helmet>
+        <title>Hello World</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
+      <h1>Hello World</h1>
+    </HelmetProvider>
+  );
+};
+
+const ChildHead: VFC = () => {
+  return (
+    <div>
+      <Helmet>
+        <title>Child</title>
+      </Helmet>
+      <h2>child</h2>
+    </div>
+  );
+};
+
+export const helmetContext2: any = {};
+export const ParentHead: VFC = () => {
+  return (
+    <HelmetProvider context={helmetContext2}>
+      <Helmet>
+        <title>Hello World</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
+      <h1>Hello World</h1>
+      <ChildHead />
+    </HelmetProvider>
   );
 };
